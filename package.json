@@ -3,11 +3,17 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "start": "run-s build start:server",
+    "start:server":"node src/server/index.j",
+    "build": "ng build --prod",
+    "watch:client": "ng serve --proxy-config proxy.conf.json --open",
+    "watch:server": "nodemon src/server/index.js",
+    "watch": "run-p watch:*",
+    "sample": "node src/server/data/seed-db.js",
+    "test": "ng test",
+    "lint": "ng lint"
   },
+
   "private": true,
   "dependencies": {
     "@angular/animations": "~13.1.0",
