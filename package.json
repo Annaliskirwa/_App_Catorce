@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "run-s build start:server",
-    "start:server":"node src/server/index.j",
+    "start:server": "node src/server/index.j",
     "build": "ng build --prod",
     "watch:client": "ng serve --proxy-config proxy.conf.json --open",
     "watch:server": "nodemon src/server/index.js",
@@ -13,7 +13,6 @@
     "test": "ng test",
     "lint": "ng lint"
   },
-
   "private": true,
   "dependencies": {
     "@angular/animations": "~13.1.0",
@@ -24,6 +23,13 @@
     "@angular/platform-browser": "~13.1.0",
     "@angular/platform-browser-dynamic": "~13.1.0",
     "@angular/router": "~13.1.0",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.1",
+    "dotenv": "^14.3.2",
+    "express": "^4.17.2",
+    "express-jwt": "^6.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^4.3.1",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
