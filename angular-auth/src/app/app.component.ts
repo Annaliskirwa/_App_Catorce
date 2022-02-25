@@ -1,11 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 
 
 // IMPORT THE AUTHSERVICE FROM THE SDK
 import { AuthService } from '@auth0/auth0-angular';
+import { DOCUMENT } from '@angular/common';
+
 @Component({
   selector: 'app-root',
-  template: '<button (click)="auth.loginWithRedirect()">Log in</button>',
+  template: `
+    <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+      <button (click)="auth.logout({ returnTo: document.location.origin })">
+        Log out
+      </button>
+    </ng-container>
+
+    <ng-template #loggedOut>
+      <button (click)="auth.loginWithRedirect()">Log in</button>
+    </ng-template>
+  `,
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
@@ -13,6 +25,7 @@ export class AppComponent {
 
   // Inject teh auth service into the component through thr constructor
   constructor(
+    @Inject(DOCUMENT) public document: Document,
     public auth: AuthService
   ){}
 }
