@@ -7,23 +7,8 @@ import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  template: `
-    <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
-      <button (click)="auth.logout({ returnTo: document.location.origin })">
-        Log out
-      </button>
-    </ng-container>
-
-    <ng-template #loggedOut>
-      <button (click)="auth.loginWithRedirect()">Log in</button>
-    </ng-template>
-
-    <ul *ngIf="auth.user$ | async as user">
-      <li>{{ user.name }}</li>
-      <li>{{ user.email }}</li>
-    </ul>
-  `,
-  styleUrls: ['./app.component.css']
+  templateUrl: 'app.component.html' ,
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   title = 'angular-auth';
